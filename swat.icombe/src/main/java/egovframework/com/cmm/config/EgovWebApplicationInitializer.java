@@ -83,7 +83,7 @@ public class EgovWebApplicationInitializer implements WebApplicationInitializer 
 		// Spring ServletContextListener 설정
 		// -------------------------------------------------------------
 		XmlWebApplicationContext rootContext = new XmlWebApplicationContext(); // NOPMD - CloseResource(리소스 닫기)
-		rootContext.setConfigLocations(new String[] { "classpath*:egovframework/spring/com/**/context-*.xml" });
+		rootContext.setConfigLocations(new String[] { "classpath*:egovframework/spring/com/**/context-*.xml", "classpath*:swat/spring/com/**/context-*.xml" });
 		//rootContext.setConfigLocations(new String[] { "classpath*:egovframework/spring/com/context-*.xml","classpath*:egovframework/spring/com/*/context-*.xml" });
 		rootContext.refresh();
 		rootContext.start();
