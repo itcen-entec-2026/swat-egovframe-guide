@@ -22,5 +22,12 @@
 	<bean id="egov.sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="egov.sqlSession"/>
 	</bean>
-	
+
+	<bean
+		class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
+		<property name="basePackage" value="swat.com" />
+		<property name="sqlSessionFactoryBeanName"
+			value="egov.sqlSession" />
+	</bean>
+
 </beans>

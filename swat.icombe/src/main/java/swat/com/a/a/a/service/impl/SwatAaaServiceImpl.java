@@ -12,12 +12,17 @@ import swat.com.a.a.a.service.SwatAaaService;
 @Slf4j
 public class SwatAaaServiceImpl extends EgovAbstractServiceImpl implements SwatAaaService {
 
-	private final SwatAaaDAO swatAaaDAO;
+	private final SwatAaaMapper swatAaaDAO;
 
 	@Override
 	public void logInsertWebLogSummary() {
 		log.debug("logInsertWebLogSummary");
-		swatAaaDAO.logInsertWebLogSummary();
+
+		int insertResult = swatAaaDAO.logInsertWebLogSummary();
+		log.debug("insertResult={}", insertResult);
+
+		int deleteResult = swatAaaDAO.logDeleteWebLogSummary();
+		log.debug("deleteResult={}", deleteResult);
 	}
 
 }
