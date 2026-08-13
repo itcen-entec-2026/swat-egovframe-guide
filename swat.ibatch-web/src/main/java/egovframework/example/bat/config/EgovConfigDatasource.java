@@ -1,6 +1,5 @@
 package egovframework.example.bat.config;
 
-import jakarta.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -13,6 +12,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jdbc.support.lob.DefaultLobHandler;
+
+import jakarta.annotation.PostConstruct;
 
 @Configuration
 public class EgovConfigDatasource {
@@ -99,7 +100,7 @@ public class EgovConfigDatasource {
 	 * @return [DataSource 설정]
 	 */
 	@Bean(name = { "dataSource" })
-	public DataSource dataSource() {
+	DataSource dataSource() {
 		if ("hsql".equals(dbType)) {
 			return dataSourceHSQL();
 		} else {
@@ -108,7 +109,7 @@ public class EgovConfigDatasource {
 	}
 
 	@Bean
-	public DefaultLobHandler lobHandler() {
+	DefaultLobHandler lobHandler() {
 		DefaultLobHandler lobHandler = new DefaultLobHandler();
 		return lobHandler;
 	}

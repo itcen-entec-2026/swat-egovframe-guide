@@ -1,6 +1,5 @@
 package egovframework.example.bat.config;
 
-import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -10,13 +9,15 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import jakarta.persistence.EntityManagerFactory;
+
 @Configuration
 //@EnableJpaRepositories("com.tuyano.libro.db")
 @EnableTransactionManagement
 class EgovConfigEntityManager {
 
 	@Bean
-	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
+	EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(true);
 

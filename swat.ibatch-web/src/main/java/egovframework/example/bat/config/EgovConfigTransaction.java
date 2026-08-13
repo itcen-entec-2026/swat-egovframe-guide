@@ -35,7 +35,7 @@ public class EgovConfigTransaction {
 	 * EgovConfigEntityManager의 jpaTransactionManager 사용
 	 */
 	@Bean(name = "transactionManager")
-	public DataSourceTransactionManager transactionManager() {
+	DataSourceTransactionManager transactionManager() {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
 		dataSourceTransactionManager.setDataSource(dataSource);
 		return dataSourceTransactionManager;
