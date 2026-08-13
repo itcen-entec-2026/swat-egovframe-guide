@@ -71,7 +71,8 @@ public class EgovBootApplication implements CommandLineRunner {
 		 */
 		EgovSchedulerRunner egovSchedulerRunner = new EgovSchedulerRunner(
 				"/egovframework/batch/context-batch-scheduler.xml", "/egovframework/batch/context-scheduler-job.xml",
-				jobPaths, 30000);
+//				jobPaths, 30000);
+				jobPaths, -1); // delay가 0보다 작은 경우 loop 반복 처리 (-delayTime 동안 대기 처리)
 		egovSchedulerRunner.start();
 
 	}
