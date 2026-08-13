@@ -182,8 +182,8 @@
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 
-		<!-- CVE-2024-7254: mysql-connector-j에서 주입되는 protobuf-java 3.25.1 취약점
-		보완용 직접 주입 -->
+		<!-- CVE-2024-7254: mysql-connector-j에서 주입되는 protobuf-java 3.25.1 취약점 보완용 
+			직접 주입 -->
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
@@ -207,29 +207,17 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- oracle 11g driver -->
-		<!--<dependency>
-			<groupId>project</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
-		</dependency>-->
+		<!--<dependency> <groupId>project</groupId> <artifactId>ojdbc6</artifactId> 
+			<version>11.2.0.3</version> </dependency> -->
 		<!-- altibase driver -->
-		<!--<dependency>
-			<groupId>project</groupId>
-			<artifactId>altibase</artifactId>
-			<version>7.1.0</version>
-		</dependency>-->
+		<!--<dependency> <groupId>project</groupId> <artifactId>altibase</artifactId> 
+			<version>7.1.0</version> </dependency> -->
 		<!-- tibero driver -->
-		<!--<dependency>
-			<groupId>project</groupId>
-			<artifactId>tibero5</artifactId>
-			<version>5.0.0</version>
-		</dependency>-->
+		<!--<dependency> <groupId>project</groupId> <artifactId>tibero5</artifactId> 
+			<version>5.0.0</version> </dependency> -->
 		<!-- cubrid driver -->
-		<!--<dependency>
-			<groupId>project</groupId>
-			<artifactId>cubrid</artifactId>
-			<version>10.2.0</version>
-		</dependency>-->
+		<!--<dependency> <groupId>project</groupId> <artifactId>cubrid</artifactId> 
+			<version>10.2.0</version> </dependency> -->
 	</dependencies>
 
 	<build>
