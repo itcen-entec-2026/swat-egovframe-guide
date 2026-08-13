@@ -1,0 +1,51 @@
+
+# Server port settings
+server:
+  port: 9300
+
+spring:
+  application:
+    name: templateBatchSAMWeb
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+
+# Overwrite the bins created from the Spring Framework 5.* - When you try to register bins with the same name - BeanDefinitionOverrideException occurs, setting that eliminates this.
+#  main:
+#    allow-bean-definition-overriding: true
+
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+      table-prefix: BATCH_
+      
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+
+logging:
+  level:
+    '[org.egovframe]': DEBUG
+    '[egovframework]': DEBUG
+#    '[org.hibernate]': DEBUG
+#    root: DEBUG
+  
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+
+
