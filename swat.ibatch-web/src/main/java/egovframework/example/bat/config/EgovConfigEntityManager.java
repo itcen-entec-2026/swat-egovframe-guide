@@ -15,25 +15,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 class EgovConfigEntityManager {
 
-    @Bean
-    public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
- 
-        LocalContainerEntityManagerFactoryBean factory = new
-            LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("egovframework.example.bat");
-        factory.setDataSource(dataSource);
-        factory.setEntityManagerFactoryInterface(EntityManagerFactory.class);
-        factory.afterPropertiesSet();
+	@Bean
+	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setGenerateDdl(true);
 
-        return factory.getObject();
-    }
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setJpaVendorAdapter(vendorAdapter);
+		factory.setPackagesToScan("egovframework.example.bat");
+		factory.setDataSource(dataSource);
+		factory.setEntityManagerFactoryInterface(EntityManagerFactory.class);
+		factory.afterPropertiesSet();
 
-    @Bean(name = "jpaTransactionManager")
-    protected JpaTransactionManager jpaTransactionManager
-            (EntityManagerFactory entityManagerFactory) {
-        return new JpaTransactionManager(entityManagerFactory);
-    }
+		return factory.getObject();
+	}
+
+	@Bean(name = "jpaTransactionManager")
+	protected JpaTransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
+		return new JpaTransactionManager(entityManagerFactory);
+	}
 }

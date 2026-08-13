@@ -12,16 +12,16 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * @Description : Transaction 설정
  *
  * @author : 윤주호
- * @since  : 2021. 7. 20
+ * @since : 2021. 7. 20
  * @version : 1.0
  *
- * <pre>
+ *          <pre>
  * << 개정이력(Modification Information) >>
  *
  *   수정일              수정자               수정내용
  *  -------------  ------------   ---------------------
  *   2021. 7. 20    윤주호               최초 생성
- * </pre>
+ *          </pre>
  *
  */
 @Configuration
@@ -31,8 +31,8 @@ public class EgovConfigTransaction {
 	DataSource dataSource;
 
 	/**
-	 * JDBC/MyBatis 작업용 DataSourceTransactionManager
-	 * JPA 작업은 EgovConfigEntityManager의 jpaTransactionManager 사용
+	 * JDBC/MyBatis 작업용 DataSourceTransactionManager JPA 작업은
+	 * EgovConfigEntityManager의 jpaTransactionManager 사용
 	 */
 	@Bean(name = "transactionManager")
 	public DataSourceTransactionManager transactionManager() {

@@ -22,13 +22,13 @@ import org.springframework.transaction.TransactionManager;
 
 @Configuration
 public class EgovConfigJobLauncher {
-	
+
 	@Bean
 	public EgovBatchRunner batchRunner(JobOperator jobOperator, JobExplorer jobExplorer, JobRepository jobRepository) {
 		EgovBatchRunner runner = new EgovBatchRunner(jobOperator, jobExplorer, jobRepository);
-	    return runner;
+		return runner;
 	}
-	
+
 	@Bean
 	public TaskExecutorJobLauncher jobLauncher(JobRepository jobRepository) {
 		TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
@@ -37,7 +37,8 @@ public class EgovConfigJobLauncher {
 	}
 
 	@Bean
-	public JobRepositoryFactoryBean jobRepository(DataSource dataSource, TransactionManager transactionManager, LobHandler lobHandler) {
+	public JobRepositoryFactoryBean jobRepository(DataSource dataSource, TransactionManager transactionManager,
+			LobHandler lobHandler) {
 		JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
 		jobRepositoryFactoryBean.setDataSource(dataSource);
 		jobRepositoryFactoryBean.setTransactionManager((PlatformTransactionManager) transactionManager);
@@ -48,9 +49,10 @@ public class EgovConfigJobLauncher {
 		jobRepositoryFactoryBean.setDatabaseType("HSQL");
 		return jobRepositoryFactoryBean;
 	}
-	
+
 	@Bean
-	public SimpleJobOperator jobOperator(JobLauncher jobLauncher, JobExplorer jobExplorer, JobRepository jobRepository, JobRegistry jobRegistry) {
+	public SimpleJobOperator jobOperator(JobLauncher jobLauncher, JobExplorer jobExplorer, JobRepository jobRepository,
+			JobRegistry jobRegistry) {
 		SimpleJobOperator jobOperator = new SimpleJobOperator();
 		jobOperator.setJobLauncher(jobLauncher);
 		jobOperator.setJobExplorer(jobExplorer);
@@ -73,5 +75,5 @@ public class EgovConfigJobLauncher {
 		MapJobRegistry jobRegistry = new MapJobRegistry();
 		return jobRegistry;
 	}
-	
+
 }

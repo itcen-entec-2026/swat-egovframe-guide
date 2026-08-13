@@ -18,25 +18,25 @@ import org.springframework.jdbc.support.lob.DefaultLobHandler;
 public class EgovConfigDatasource {
 
 	/**
-	 *  @Value 을 어노테이션을 이용하는 방법
+	 * @Value 을 어노테이션을 이용하는 방법
 	 */
-	//	@Value("${Globals.DbType}")
-	//	private String dbType;
+	// @Value("${Globals.DbType}")
+	// private String dbType;
 	//
-	//	@Value("${Globals.DriverClassName}")
-	//	private String className;
+	// @Value("${Globals.DriverClassName}")
+	// private String className;
 	//
-	//	@Value("${Globals.Url}")
-	//	private String url;
+	// @Value("${Globals.Url}")
+	// private String url;
 	//
-	//	@Value("${Globals.UserName}")
-	//	private String userName;
+	// @Value("${Globals.UserName}")
+	// private String userName;
 	//
-	//	@Value("${Globals.Password}")
-	//	private String password;
-	
+	// @Value("${Globals.Password}")
+	// private String password;
+
 	/**
-	 *  Environment 의존성 주입하여 사용하는 방법
+	 * Environment 의존성 주입하여 사용하는 방법
 	 */
 
 	@Autowired
@@ -51,38 +51,36 @@ public class EgovConfigDatasource {
 	@PostConstruct
 	void init() {
 		dbType = env.getProperty("Globals.DbType");
-		//Exception 처리 필요
+		// Exception 처리 필요
 		className = env.getProperty("Globals." + dbType + ".DriverClassName");
 		url = env.getProperty("Globals." + dbType + ".Url");
 		userName = env.getProperty("Globals." + dbType + ".UserName");
 		password = env.getProperty("Globals." + dbType + ".Password");
 	}
-	
+
 	/**
 	 * @return [dataSource 설정] HSQL 설정
 	 */
 	public DataSource dataSourceHSQL() {
-	    EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-	    builder.setType(EmbeddedDatabaseType.HSQL);
-	    builder.setName("batchdb");
-	    builder.addScript("classpath:/db/sampledb.script");
-	    
-	    // Spring Batch 5.x 스키마 자동 추가
-	    // 여러 경로 시도
-	    String[] schemaPaths = {
-	        "org/springframework/batch/core/schema-hsqldb.sql",
-	        "org/springframework/batch/core/schema-h2.sql"
-	    };
-	    
-	    for (String path : schemaPaths) {
-	        Resource schemaResource = new ClassPathResource(path);
-	        if (schemaResource.exists()) {
-	            builder.addScript("classpath:" + path);
-	            break;
-	        }
-	    }
-	    
-	    return builder.build();
+		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+		builder.setType(EmbeddedDatabaseType.HSQL);
+		builder.setName("batchdb");
+		builder.addScript("classpath:/db/sampledb.script");
+
+		// Spring Batch 5.x 스키마 자동 추가
+		// 여러 경로 시도
+		String[] schemaPaths = { "org/springframework/batch/core/schema-hsqldb.sql",
+				"org/springframework/batch/core/schema-h2.sql" };
+
+		for (String path : schemaPaths) {
+			Resource schemaResource = new ClassPathResource(path);
+			if (schemaResource.exists()) {
+				builder.addScript("classpath:" + path);
+				break;
+			}
+		}
+
+		return builder.build();
 	}
 
 	/**
@@ -100,7 +98,7 @@ public class EgovConfigDatasource {
 	/**
 	 * @return [DataSource 설정]
 	 */
-	@Bean(name = {"dataSource"})
+	@Bean(name = { "dataSource" })
 	public DataSource dataSource() {
 		if ("hsql".equals(dbType)) {
 			return dataSourceHSQL();
@@ -108,7 +106,7 @@ public class EgovConfigDatasource {
 			return dataSourceBasic();
 		}
 	}
-	
+
 	@Bean
 	public DefaultLobHandler lobHandler() {
 		DefaultLobHandler lobHandler = new DefaultLobHandler();

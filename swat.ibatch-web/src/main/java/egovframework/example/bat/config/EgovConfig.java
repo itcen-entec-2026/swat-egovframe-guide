@@ -6,9 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
 @Configuration
-@PropertySources({
-	@PropertySource("classpath:/egovframework/egovProps/globals.properties")
-})
+@PropertySources({ @PropertySource("classpath:/egovframework/egovProps/globals.properties") })
 public class EgovConfig {
 
 }
