@@ -1,3 +1,4 @@
+<%@page import="egovframework.com.cmm.service.Globals"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
@@ -61,6 +62,22 @@ function checkLogin(userSe) {
 }
 
 function actionLogin() {
+	if (document.loginForm.id.value =="") {
+        alert("<spring:message code="comUatUia.validate.idCheck" />"); <%-- 아이디를 입력하세요 --%>
+    } else if (document.loginForm.password.value =="") {
+        alert("<spring:message code="comUatUia.validate.passCheck" />"); <%-- 비밀번호를 입력하세요 --%>
+    } else {
+        document.loginForm.action="<c:url value='/uat/uia/actionLogin.do'/>";
+        //document.loginForm.j_username.value = document.loginForm.userSe.value + document.loginForm.username.value;
+        //document.loginForm.action="<c:url value='/j_spring_security_check'/>";
+        document.loginForm.submit();
+    }
+}
+
+function actionLogin2(id) {
+	document.loginForm.userSe.value = "USR";
+	document.loginForm.id.value = id;
+	document.loginForm.password.value = id;
 	if (document.loginForm.id.value =="") {
         alert("<spring:message code="comUatUia.validate.idCheck" />"); <%-- 아이디를 입력하세요 --%>
     } else if (document.loginForm.password.value =="") {
@@ -173,7 +190,8 @@ function fnInit() {
     
     getid(document.loginForm);
     
-    fnLoginTypeSelect("typeGnr");
+//     fnLoginTypeSelect("typeGnr");
+    fnLoginTypeSelect("typeUsr");
 
     <c:if test="${not empty fn:trim(loginMessage) &&  loginMessage ne ''}">
     alert("loginMessage:<c:out value='${loginMessage}'/>");
@@ -227,6 +245,7 @@ function fnShowLogin(stat) {
 	
 	<fieldset>
 
+		<%=Globals.DB_TYPE%>
 		<img src="<c:url value='/images/egovframework/com/uat/uia/login_tit.png'/>" style="margin:30px 0 0px 60px" alt="login title image"  title="login title image">
 		<div class="login_type">
 			<ul id="ulLoginType">
@@ -270,6 +289,16 @@ function fnShowLogin(stat) {
 				</li>
 				<li>
 					<input type="button" class="btn_login" value="<spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin()"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf01 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf01')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf02 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf02')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf03 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf03')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf04 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf04')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf05 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf05')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf06 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf06')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf07 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf07')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf08 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf08')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf09 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf09')"> <!-- 로그인  -->
+					<input type="button" class="btn_login" value="perf10 <spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin2('perf10')"> <!-- 로그인  -->
 				</li>
 				<li>
 					<ul class="btn_idpw" >
